@@ -1,0 +1,11 @@
+{
+  "name": "notes-keeper",
+  "version": "1.0.0",
+  "description": "Web App for keeping your notes.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vikram S",
+  "license": "ISC"
+}
