@@ -16,7 +16,7 @@ router.get("/", auth, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id }).sort({
       date: -1,
-    }); //makes most recent contacts first
+    }); //makes most recentnotes first
     res.json(notes);
   } catch (err) {
     console.error(err.message);
@@ -55,16 +55,16 @@ router.post(
   }
 );
 
-// @route     PUT api/contacts/:id
-// @desc      Update contact
+// @route     PUT api/notes/:id
+// @desc      Update note
 // @access    Private
 router.put("/:id", auth, async (req, res) => {
   const { title, description } = req.body;
 
   // Build note object
   const noteFields = {};
-  if (title) contactFields.title = title;
-  if (description) contactFields.description = description;
+  if (title) noteFields.title = title;
+  if (description) noteFields.description = description;
 
   try {
     let note = await Note.findById(req.params.id);
@@ -89,23 +89,23 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-// @route     DELETE api/contacts/:id
-// @desc      Delete contact
+// @route     DELETE api/notes/:id
+// @desc      Delete note
 // @access    Private
 router.delete("/:id", auth, async (req, res) => {
   try {
-    let contact = await Contact.findById(req.params.id);
+    let note = await Notes.findById(req.params.id);
 
-    if (!contact) return res.status(404).json({ msg: "Contact not found" });
+    if (!note) return res.status(404).json({ msg: "Note not found" });
 
-    // Make sure user owns contact
-    if (contact.user.toString() !== req.user.id) {
+    // Make sure user owns note
+    if (note.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }
 
-    await Contact.findByIdAndRemove(req.params.id);
+    await Note.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: "Contact removed" });
+    res.json({ msg: "Note removed" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
