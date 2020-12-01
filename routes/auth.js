@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator"); //from Express
 const bcrypt = require("bcryptjs"); //For Hashing the password.
 const jwt = require("jsonwebtoken");
 const config = require("config");
-//const auth = require("../middleware/auth"); // this is brought to the route which need projection
+const auth = require("../middleware/auth"); // this is brought to the route which need projection
 
 const User = require("../models/User");
 
@@ -14,7 +14,7 @@ const User = require("../models/User");
 
 router.get("/", auth, async (req, res) => {
   try {
-    //req.user is from the middleware.
+    //req.user is from the middleware. which has id of the user who logged in.
     const user = await User.findById(req.user.id).select("-password"); //.select help us to avoid something from the database.
     res.json(user);
   } catch (err) {
