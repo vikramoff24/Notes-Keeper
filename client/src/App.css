@@ -3,7 +3,7 @@
 /* Global Styles */
 :root {
   --primary-color: #f5ba13;
-  --dark-color: #333333;
+  --dark-color: hsl(0, 0%, 20%);
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -454,4 +454,10 @@ table th {
 .item-exit-active {
   opacity: 0;
   transition: opacity 1000ms ease-in;
+}
+
+header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
 }
