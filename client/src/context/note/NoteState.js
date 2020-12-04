@@ -42,7 +42,9 @@ const NoteState = (props) => {
   //actions
 
   //Get notes
-
+  const getNotes = () => {
+    dispatch({ type: GET_NOTES });
+  };
   //Add notes
   const addNote = (note) => {
     note._id = uuidv4();
