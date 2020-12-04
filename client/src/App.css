@@ -364,6 +364,9 @@ table th {
 .navbar ul {
   display: flex;
 }
+.navbar li {
+  font-size: 1.2em;
+}
 
 .navbar a {
   color: #fff;
