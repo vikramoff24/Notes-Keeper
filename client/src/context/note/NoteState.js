@@ -56,7 +56,18 @@ const NoteState = (props) => {
   };
   //Clear notes
 
-  return <div></div>;
+  return (
+    <NoteContext.Provider
+      value={{
+        notes: state.notes,
+        getNotes,
+        addNote,
+        deleteNote,
+      }}
+    >
+      {props.children}
+    </NoteContext.Provider>
+  );
 };
 
 export default NoteState;
