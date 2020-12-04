@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar.js";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import { BrowserRouter as Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <Router>

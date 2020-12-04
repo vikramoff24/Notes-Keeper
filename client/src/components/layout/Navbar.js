@@ -8,16 +8,17 @@ const Navbar = ({ title, icon }) => {
       <h1 className="header">
         <i className={icon} /> {title}
       </h1>
-      <Fragment>
-        <ul>
+
+      <ul>
+        <Fragment>
           <li>
             <Link to="/register">Register</Link>
           </li>
           <li>
             <Link to="/login">Login</Link>
           </li>
-        </ul>
-      </Fragment>
+        </Fragment>
+      </ul>
     </div>
   );
 };
