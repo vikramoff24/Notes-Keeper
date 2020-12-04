@@ -21,6 +21,9 @@ const NoteForm = (props) => {
 
     if (name === "description") {
       setBool(true);
+      if (value === "") {
+        setBool(false);
+      }
     }
   };
 
@@ -50,11 +53,11 @@ const NoteForm = (props) => {
           value={note.description}
           onChange={handleChange}
         />
-        {/* <Zoom in={!bool ? false : true}> */}
-        <Fab onClick={handleClick}>
-          <AddIcon />
-        </Fab>
-        {/* </Zoom> */}
+        <Zoom in={!bool ? false : true}>
+          <Fab onClick={handleClick}>
+            <AddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );
