@@ -27,7 +27,7 @@ export default (state, action) => {
     case DELETE_NOTE:
       return {
         ...state,
-        notes: notes.filter((note) => note._id != action.payload),
+        notes: state.notes.filter((note) => note._id != action.payload),
       };
     default:
       return state;
