@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = ({ title, icon }) => {
   return (
     <div className="navbar bg-primary ">
-      <h1 className="header">
+      <h1 className="brand">
         <i className={icon} /> {title}
       </h1>
 
@@ -29,6 +29,6 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   title: "Notes keeper",
-  icon: "fas fa-clipboard",
+  icon: "far fa-clipboard",
 };
 export default Navbar;

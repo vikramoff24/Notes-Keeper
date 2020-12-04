@@ -11,6 +11,7 @@ const NoteItem = (props) => {
     <div className="note">
       <h1>{props.title}</h1>
       <p>{props.description}</p>
+
       <button>
         <DeleteIcon onClick={handleClick} />
       </button>
