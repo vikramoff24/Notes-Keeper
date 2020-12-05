@@ -58,6 +58,8 @@ const AuthState = (props) => {
       dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
     }
   };
+  // Clear Error
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
   return (
     <AuthContext.Provider
       value={{
@@ -68,6 +70,7 @@ const AuthState = (props) => {
         error: state.error,
         register,
         loadUser,
+        clearErrors,
       }}
     >
       {props.children}
