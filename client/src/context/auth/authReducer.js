@@ -26,6 +26,16 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
       };
+    case LOGIN_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false,
+      };
+
+    case LOGIN_FAIL:
     case REGISTER_FAIL:
     case AUTH_ERROR:
       localStorage.removeItem("token");
