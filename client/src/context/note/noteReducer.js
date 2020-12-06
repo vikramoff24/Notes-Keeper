@@ -29,6 +29,12 @@ export default (state, action) => {
         ...state,
         notes: state.notes.filter((note) => note._id != action.payload),
       };
+    case CLEAR_NOTES:
+      return {
+        ...state,
+        notes: null,
+        error: null,
+      };
     default:
       return state;
   }
