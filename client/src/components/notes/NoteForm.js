@@ -25,7 +25,18 @@ const NoteForm = (props) => {
         setBool(false);
       }
     }
+    if (name == "description") {
+      setInputHeight(event, "80px");
+    }
   };
+
+  function setInputHeight(element, defaultHeight) {
+    if (element) {
+      const target = element.target ? element.target : element;
+      target.style.height = defaultHeight;
+      target.style.height = `${target.scrollHeight}px`;
+    }
+  }
 
   const handleClick = (event) => {
     addNote(note);
@@ -36,6 +47,7 @@ const NoteForm = (props) => {
     setBool(false);
     event.preventDefault();
   };
+
   return (
     <div>
       <form autoComplete="off" className="create-note">
