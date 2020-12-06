@@ -35,6 +35,7 @@ const NoteState = (props) => {
         description: "description 3...............",
       },
     ],
+    error: null,
   };
 
   const [state, dispatch] = useReducer(noteReducer, initalState);
@@ -55,7 +56,9 @@ const NoteState = (props) => {
     dispatch({ type: DELETE_NOTE, payload: _id });
   };
   //Clear notes
-
+  const clearNotes = () => {
+    dispatch({ type: CLEAR_NOTES });
+  };
   return (
     <NoteContext.Provider
       value={{
