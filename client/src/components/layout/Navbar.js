@@ -10,8 +10,8 @@ const Navbar = ({ title, icon }) => {
   const { clearNotes } = noteContext;
 
   const onLogout = () => {
-    logout();
     clearNotes();
+    logout();
   };
   const authLinks = (
     <Fragment>
