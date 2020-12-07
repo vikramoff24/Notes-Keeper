@@ -6,6 +6,7 @@ import NoteContext from "../../context/note/noteContext";
 const NoteForm = (props) => {
   const noteContext = useContext(NoteContext);
   const { addNote } = noteContext;
+  const [ev, setEv] = useState("");
 
   const [note, setNote] = useState({
     title: "",
@@ -25,8 +26,9 @@ const NoteForm = (props) => {
         setBool(false);
       }
     }
-    if (name == "description") {
+    if (name === "description") {
       setInputHeight(event, "80px");
+      setEv(event);
     }
   };
 
@@ -45,6 +47,7 @@ const NoteForm = (props) => {
       description: "",
     });
     setBool(false);
+    ev.target.style.height = "55px";
     event.preventDefault();
   };
 
