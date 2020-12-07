@@ -30,7 +30,7 @@ export default (state, action) => {
     case DELETE_NOTE:
       return {
         ...state,
-        notes: state.notes.filter((note) => note._id != action.payload),
+        notes: state.notes.filter((note) => note._id !== action.payload),
         loading: false,
       };
     case CLEAR_NOTES:
