@@ -441,7 +441,7 @@ table th {
     width: 240px;
   }
   .note-section {
-    margin-right: 200px;
+    margin-right: 250px;
   }
 }
 
@@ -545,4 +545,22 @@ form.create-note button {
 .note-section {
   margin-left: 100px;
   margin-right: 100px;
+}
+
+@media (max-width: 480px) {
+  .note {
+    width: 240px;
+  }
+  .note-section {
+    margin-left: 20px;
+    margin-right: 200px;
+  }
+  form.create-note {
+    width: 300px;
+  }
+  @media (min-width: 440px) {
+    .note-section {
+      margin-left: 50px;
+    }
+  }
 }

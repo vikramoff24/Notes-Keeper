@@ -13,6 +13,7 @@ const Notes = () => {
   return notes.map((note) => (
     <NoteItem
       key={note._id}
+      _id={note._id}
       title={note.title}
       description={note.description}
     />

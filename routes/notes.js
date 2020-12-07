@@ -13,7 +13,7 @@ const Note = require("../models/Note");
 router.get("/", auth, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id }).sort({
-      date: -1,
+      date: "ascending",
     }); //makes most recentnotes first
     res.json(notes);
   } catch (err) {
