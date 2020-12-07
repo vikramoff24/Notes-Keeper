@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import NoteContext from "./noteContext";
 import noteReducer from "./noteReducer";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import {
   GET_NOTES,
@@ -18,23 +19,7 @@ import {
 } from "../types";
 const NoteState = (props) => {
   const initalState = {
-    notes: [
-      {
-        _id: "1",
-        title: "title 1",
-        description: "description 1...............",
-      },
-      {
-        _id: "2",
-        title: "title 2",
-        description: "description 2...............",
-      },
-      {
-        _id: " 3",
-        title: "title 3",
-        description: "description 3...............",
-      },
-    ],
+    notes: [],
     error: null,
   };
 
@@ -43,17 +28,36 @@ const NoteState = (props) => {
   //actions
 
   //Get notes
-  const getNotes = () => {
-    dispatch({ type: GET_NOTES });
+  const getNotes = async () => {
+    try {
+      const res = await axios.get("/api/notes");
+      dispatch({ type: GET_NOTES, payload: res.data });
+    } catch (err) {
+      dispatch({ type: NOTE_ERROR, payload: err.response.data.msg });
+    }
   };
   //Add notes
-  const addNote = (note) => {
-    note._id = uuidv4();
-    dispatch({ type: ADD_NOTE, payload: note });
+  const addNote = async (note) => {
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/notes", note, config);
+      dispatch({ type: ADD_NOTE, payload: res.data });
+    } catch (err) {
+      dispatch({ type: NOTE_ERROR, payload: err.response.data.msg });
+    }
   };
   //Delete notes
-  const deleteNote = (_id) => {
-    dispatch({ type: DELETE_NOTE, payload: _id });
+  const deleteNote = async (_id) => {
+    try {
+      await axios.delete(`/api/notes/${_id}`);
+      dispatch({ type: DELETE_NOTE, payload: _id });
+    } catch (err) {
+      dispatch({ type: NOTE_ERROR, payload: err.response.data.msg });
+    }
   };
   //Clear notes
   const clearNotes = () => {
@@ -66,6 +70,7 @@ const NoteState = (props) => {
         getNotes,
         addNote,
         deleteNote,
+        clearNotes,
       }}
     >
       {props.children}
