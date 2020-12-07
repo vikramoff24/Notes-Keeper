@@ -486,6 +486,8 @@ body {
   font-size: 1.6em;
   margin-bottom: 6px;
   font-weight: bold;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 .note p {
   font-size: 1.1em;
