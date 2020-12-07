@@ -1,4 +1,4 @@
 {
     "mongoURI":"mongodb+srv://vikram:vikram123@cluster0.feqwa.mongodb.net/notesDB?retryWrites=true&w=majority",
     "jwtSecret":"secret"  
-  }
+}
