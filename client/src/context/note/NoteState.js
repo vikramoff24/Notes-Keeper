@@ -6,14 +6,7 @@ import {
   GET_NOTES,
   ADD_NOTE,
   DELETE_NOTE,
-  SET_CURRENT,
-  CLEAR_CURRENT,
   CLEAR_NOTES,
-  UPDATE_NOTE,
-  FILTER_NOTES,
-  CLEAR_FILTER,
-  SET_ALERT,
-  REMOVE_ALERT,
   NOTE_ERROR,
 } from "../types";
 const NoteState = (props) => {
