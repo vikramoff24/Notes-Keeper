@@ -4,7 +4,6 @@ const router = express.Router();
 const auth = require("../middleware/auth"); //Whenever we need to protect routes we need to use this middleware
 const { check, validationResult } = require("express-validator");
 //Model
-const User = require("../models/User");
 const Note = require("../models/Note");
 
 // @route    GET api/notes
@@ -94,7 +93,7 @@ router.put("/:id", auth, async (req, res) => {
 // @access    Private
 router.delete("/:id", auth, async (req, res) => {
   try {
-    let note = await Notes.findById(req.params.id);
+    let note = await Note.findById(req.params.id);
 
     if (!note) return res.status(404).json({ msg: "Note not found" });
 
