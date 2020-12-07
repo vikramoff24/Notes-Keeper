@@ -2,7 +2,6 @@ import React, { useReducer } from "react";
 import NoteContext from "./noteContext";
 import noteReducer from "./noteReducer";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import {
   GET_NOTES,
   ADD_NOTE,
