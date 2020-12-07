@@ -2,7 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth"); //Whenever we need to protect routes we need to use this middleware
-const { check, validationResult } = require("express-validator");
 //Model
 const Note = require("../models/Note");
 
@@ -26,33 +25,22 @@ router.get("/", auth, async (req, res) => {
 // @desc    Add new note
 // @access  Private
 
-router.post(
-  "/",
-  [auth, [check("title", "title is Required").not().isEmpty()]],
-  async (req, res) => {
-    //Express-validation
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      //sends the array of errors with the errors object.
-      return res.status(400).json({ errors: errors.array() });
-    }
+router.post("/", auth, async (req, res) => {
+  const { title, description } = req.body;
 
-    const { title, description } = req.body;
-
-    try {
-      const newNote = new Note({
-        title,
-        description,
-        user: req.user.id, //This gives reference to the user who have logged in
-      });
-      const note = await newNote.save();
-      res.json(note);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("server error");
-    }
+  try {
+    const newNote = new Note({
+      title,
+      description,
+      user: req.user.id, //This gives reference to the user who have logged in
+    });
+    const note = await newNote.save();
+    res.json(note);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("server error");
   }
-);
+});
 
 // @route     PUT api/notes/:id
 // @desc      Update note
