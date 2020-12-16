@@ -8,7 +8,6 @@ const Navbar = ({ title, icon }) => {
   const noteContext = useContext(NoteContext);
   const { user, isAuthenticated, logout } = authContext;
   const { clearNotes } = noteContext;
-
   const onLogout = () => {
     clearNotes();
     logout();
