@@ -16,7 +16,6 @@ const NoteState = (props) => {
   };
 
   const [state, dispatch] = useReducer(noteReducer, initalState);
-
   //actions
 
   //Get notes
