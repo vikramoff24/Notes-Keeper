@@ -68,7 +68,6 @@ router.put("/:id", auth, async (req, res) => {
       { $set: noteFields },
       { new: true }
     );
-
     res.json(note);
   } catch (err) {
     console.error(err.message);
